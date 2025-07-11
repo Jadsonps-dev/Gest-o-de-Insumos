@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:13
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: luftsolutions
+      POSTGRES_PASSWORD: luft@2025
+      POSTGRES_DB: luft
+    ports:
+      - "5333:5432"  
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - minha_rede
+
+networks:
+  minha_rede:
+    driver: bridge
+
+volumes:
+  postgres_data:
